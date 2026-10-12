@@ -35,10 +35,14 @@ const getAIReply = async (message, username) => {
         role: 'user',
         content: message
       }],
-      max_tokens: 100
+      max_completion_tokens: 300,
+      reasoning_effort: 'low'
     });
 
-    return completion.choices[0].message.content;
+    const content = completion.choices[0].message.content;
+    return content && content.trim()
+      ? content
+      : "Désolé, je n'ai pas pu formuler de réponse, peux-tu reformuler ? 🙏";
   } catch (error) {
     console.error('Groq API error:', error.message);
     return "Sorry, I'm having trouble responding right now! 😅";
