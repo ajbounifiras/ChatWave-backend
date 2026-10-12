@@ -24,7 +24,7 @@ const users = {};
 const getAIReply = async (message, username) => {
   try {
     const completion = await groq.chat.completions.create({
-      model: 'llama-3.1-8b-instant',
+      model: 'openai/gpt-oss-20b',
       messages: [{
         role: 'system',
         content: `You are ChatWave Bot, a friendly assistant in a chat app.
